@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "136475336514",
+    "project_id": "careplan-6b0df",
+    "storage_bucket": "careplan-6b0df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136475336514:android:9fd9a8d2b720207e3972db",
+        "android_client_info": {
+          "package_name": "com.example.careplan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136475336514-kevnd24tepsurpseb8s72h81j0l1smu0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.careplan",
+            "certificate_hash": "4c0f7c51e67a2aa021ed035f019ef9293f68a4ac"
+          }
+        },
+        {
+          "client_id": "136475336514-pk76e091l6fh7j08vldl3on7bftirvft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMK4LFFKMqPQ4uiC5PGKVtP30biEcPFjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136475336514-pk76e091l6fh7j08vldl3on7bftirvft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

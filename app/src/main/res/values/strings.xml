@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CarePlan</string>
+    <string name="name">Név</string>
+    <string name="pwd">Jelszo</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="reg">Regisztráció</string>
+    <string name="user_name">Felhasználónév</string>
+    <string name="email">Email cím</string>
+    <string name="pwd_again">Jelszó megerősítése</string>
+    <string name="undo">Mégse</string>
+    <string name="back">Vissza</string>
+    <string name="g_login">Google bejelentkezés</string>
+    <string name="patientName">Név</string>
+    <string name="Sex">Neme</string>
+    <string name="age">age</string>
+    <string name="doctor">kezelő orvosa</string>
+    <string-array name="Orvosa_neve">
+        <item>Orvos1</item>
+        <item>orvos2</item>
+        <item>Orvos3</item>
+        <item>Orvos4</item>
+    </string-array>
+</resources>
