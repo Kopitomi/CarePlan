@@ -24,8 +24,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.grpc.CallCredentials;
@@ -33,7 +37,7 @@ import io.grpc.CallCredentials;
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final String  LOG_TAG = MainActivity.class.getName();
 
-
+    //List<String> category;
     private FirebaseFirestore firestore;
     EditText nextAppointmentET;
     EditText usernameET;
@@ -42,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     EditText ageET;
     EditText birthET;
     Spinner docSpinner;
+    Spinner catSpinner;
     EditText progressionET;
     EditText mondayET;
     EditText tuesdayET;
@@ -50,6 +55,9 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     EditText fridayET;
     EditText saturdayET;
     EditText sundayET;
+    EditText categoryET;
+
+    List<String> category = new ArrayList<>();
 
 
 
@@ -63,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        Log.i(LOG_TAG, String.valueOf(category.size()));
 
         firestore = FirebaseFirestore.getInstance();
         usernameET = findViewById(R.id.UsernameEditText);
@@ -81,13 +89,26 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         fridayET = findViewById(R.id.FridayDescription);
         saturdayET = findViewById(R.id.SaturdayDescription);
         sundayET = findViewById(R.id.SundayDescription);
-
-
+        categoryET = findViewById(R.id.categoryEditText);
+        catSpinner = findViewById(R.id.categorySpinner);
         sexRB.check(R.id.alap);
+
         docSpinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Orvosa_neve, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         docSpinner.setAdapter(adapter);
+
+
+
+        category.add("diabetes");
+        catSpinner.setOnItemSelectedListener(this);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, category);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        catSpinner.setAdapter(adapter1);
+
+//       category.add("category2");
+
+
 
     }
     public void regist(View view) {
@@ -105,25 +126,37 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         String friday = fridayET.getText().toString();
         String saturday = saturdayET.getText().toString();
         String sunday = sundayET.getText().toString();
+        String categoria = categoryET.getText().toString();
+        String categorySpinner = catSpinner.getSelectedItem().toString();
+
+
+
 
         int checkedSex = sexRB.getCheckedRadioButtonId();
         RadioButton radioButton = sexRB.findViewById(checkedSex);
         String sexType = radioButton.getText().toString();
 
         DocumentReference ref = firestore.collection("patient").document(username);
+        Date currentTime = Calendar.getInstance().getTime();
         Map<String,Object> patientData = new HashMap<>();
+        if (categoria.matches("")){
+            patientData.put("category", categorySpinner);
+        } else {
+            patientData.put("category", categoria);
+            category.add(categoria);
+
+        }
         patientData.put("nextAppointment", nextAppointment);
+        patientData.put("created", currentTime);
         patientData.put("fullName", username);
         patientData.put("sex", sexType);
         patientData.put("doctorsName", doc);
         patientData.put("contact", email);
         patientData.put("age", age);
-
         patientData.put("birthDay", birthDate);
         patientData.put("contact", email);
         patientData.put("description", progress);
         patientData.put("nextAppointment", nextAppointment);
-
         patientData.put("monday", monday);
         patientData.put("tuesday", tuesday);
         patientData.put("wednesday", wednesday);
@@ -132,21 +165,34 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         patientData.put("saturday", saturday);
         patientData.put("sunday", sunday);
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivity(intent);
         ref.set(patientData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                Log.i(LOG_TAG, "siker");
-
+               Log.i(LOG_TAG, String.valueOf(category.size()));
+                 nextAppointmentET.getText().clear();
+                 usernameET.getText().clear();
+                 emailET.getText().clear();
+                 ageET.getText().clear();
+                 birthET.getText().clear();
+                 progressionET.getText().clear();
+                 mondayET.getText().clear();
+                 tuesdayET.getText().clear();
+                 wednesdayET.getText().clear();
+                 thursdayET.getText().clear();
+                 fridayET.getText().clear();
+                 saturdayET.getText().clear();
+                 sundayET.getText().clear();
+                 categoryET.getText().clear();
             }
         });
 
     }
 
     public void cancle(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     @Override

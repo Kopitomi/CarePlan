@@ -123,6 +123,10 @@
         android:layout_below="@id/birthEditText"
         />
 
+<!--    <ListView-->
+<!--        android:layout_width=""-->
+<!--        android:layout_height="" />-->
+
     <EditText
         android:id="@+id/progressEditText"
         android:layout_width="match_parent"
@@ -138,6 +142,28 @@
         android:layout_below="@id/doctorNameEditText"
         />
 
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progressEditText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="248dp"
+        android:layout_marginRight="20dp"
+        android:hint="Kategória" />
+
+    <EditText
+        android:id="@+id/categoryEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progressEditText"
+        android:hint="category"
+        android:layout_marginLeft="160dp"
+        android:layout_marginRight="20dp" />
+
     <TextView
         android:id="@+id/Monday"
         android:layout_width="wrap_content"
@@ -147,7 +173,7 @@
         android:layout_marginLeft="20dp"
         android:textAlignment="center"
         android:gravity="center"
-        android:layout_below="@+id/progressEditText"
+        android:layout_below="@+id/categoryEditText"
         android:text="Hétfő: " />
 
     <EditText
@@ -156,7 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="110dp"
         android:layout_marginRight="20dp"
-        android:layout_below="@+id/progressEditText"
+        android:layout_below="@+id/categoryEditText"
         android:hint="Hétfői dolgok" />
 
     <TextView
@@ -285,7 +311,6 @@
         android:layout_below="@+id/SaturdayDescription"
         android:hint="Vasárnapi dolgok" />
 
-
     <EditText
         android:id="@+id/nextAppointmentEditText"
         android:layout_width="wrap_content"
@@ -295,7 +320,7 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Következő időpont"
-        android:inputType="date"
+        android:inputType="datetime"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/SundayDescription"
