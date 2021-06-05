@@ -122,21 +122,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@id/birthEditText"
         />
-    <EditText
-        android:id="@+id/PlanEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="Leírása"
-        android:maxLines="5"
-        android:inputType="text|textMultiLine"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/doctorNameEditText"
-        />
+
     <EditText
         android:id="@+id/progressEditText"
         android:layout_width="match_parent"
@@ -145,12 +131,161 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Állapot"
+        android:hint="Összefoglaló"
         android:inputType="text"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/PlanEditText"
+        android:layout_below="@id/doctorNameEditText"
         />
+
+    <TextView
+        android:id="@+id/Monday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_below="@+id/progressEditText"
+        android:text="Hétfő: " />
+
+    <EditText
+        android:id="@+id/MondayDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/progressEditText"
+        android:hint="Hétfői dolgok" />
+
+    <TextView
+        android:id="@+id/Tuesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_below="@+id/MondayDescription"
+        android:text="Kedd: " />
+
+    <EditText
+        android:id="@+id/TuesdayDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/MondayDescription"
+        android:hint="Keddi dolgok" />
+
+    <TextView
+        android:id="@+id/Wednesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_below="@+id/TuesdayDescription"
+        android:text="Szerda: " />
+
+    <EditText
+        android:id="@+id/WednesdayDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/TuesdayDescription"
+        android:hint="Szerdai dolgok" />
+
+    <TextView
+        android:id="@+id/Thursday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_below="@+id/WednesdayDescription"
+        android:text="Csütörtök: " />
+
+    <EditText
+        android:id="@+id/ThursdayDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/WednesdayDescription"
+        android:hint="Csütörtöki dolgok" />
+
+    <TextView
+        android:id="@+id/Friday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_below="@+id/ThursdayDescription"
+        android:text="Péntek: " />
+
+    <EditText
+        android:id="@+id/FridayDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/ThursdayDescription"
+        android:hint="Pénteki dolgok" />
+
+    <TextView
+        android:id="@+id/Saturday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_below="@+id/FridayDescription"
+        android:text="Szombat: " />
+
+    <EditText
+        android:id="@+id/SaturdayDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/FridayDescription"
+        android:hint="Szombati dolgok" />
+
+    <TextView
+        android:id="@+id/Sunday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_below="@+id/SaturdayDescription"
+        android:text="Vasárnap: " />
+
+    <EditText
+        android:id="@+id/SundayDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/SaturdayDescription"
+        android:hint="Vasárnapi dolgok" />
+
+
     <EditText
         android:id="@+id/nextAppointmentEditText"
         android:layout_width="wrap_content"
@@ -163,21 +298,8 @@
         android:inputType="date"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/progressEditText"
+        android:layout_below="@id/SundayDescription"
         />
-<!--    <CheckBox android:id="@+id/finishedCheckBox"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:text="kezelés vége"-->
-<!--        android:onClick="onCheckboxClicked"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_below="@+id/nextAppointmentEditText"-->
-<!--        />-->
-
 
     <LinearLayout
         android:layout_width="wrap_content"

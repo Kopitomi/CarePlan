@@ -40,9 +40,16 @@ public class PatientInfo extends AppCompatActivity {
     String mPatientBirthDay;
     String mPatientDoctorsName;
     String mPatientDescription;
-    String mPatientStatus;
+
     String mPatientNextAppo;
 
+    String mPatientDutyMonday;
+    String mPatientDutyTuesday;
+    String mPatientDutyWednesday;
+    String mPatientDutyThursday;
+    String mPatientDutyFriday;
+    String mPatientDutySaturday;
+    String mPatientDutySunday;
 
     TextView CurrentPatient;
     EditText patientName;
@@ -52,8 +59,15 @@ public class PatientInfo extends AppCompatActivity {
     EditText patientBirthD;
     EditText patientDoctorsName;
     EditText patientDescription;
-    EditText patientStatus;
     EditText patientNextOpp;
+
+    EditText PatientDutyMonday;
+    EditText PatientDutyTuesday;
+    EditText PatientDutyWednesday;
+    EditText PatientDutyThursday;
+    EditText PatientDutyFriday;
+    EditText PatientDutySaturday;
+    EditText PatientDutySunday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,14 +83,22 @@ public class PatientInfo extends AppCompatActivity {
         CurrentPatient = findViewById(R.id.user);
         patientName = findViewById(R.id.UsernameEditText);
         patientGender = findViewById(R.id.SexEditText);
-
         patientContact = findViewById(R.id.EmailEditText);
         patientAge = findViewById(R.id.ageEditText);
         patientBirthD = findViewById(R.id.birthEditText);
         patientDoctorsName = findViewById(R.id.doctorNameEditText);
-        patientDescription = findViewById(R.id.PlanEditText);
-        patientStatus = findViewById(R.id.progressEditText);
+        patientDescription = findViewById(R.id.progressEditText);
+
         patientNextOpp = findViewById(R.id.nextAppointmentEditText);
+
+        PatientDutyMonday = findViewById(R.id.MondayDescription);
+        PatientDutyTuesday = findViewById(R.id.TuesdayDescription);
+        PatientDutyWednesday = findViewById(R.id.WednesdayDescription);
+        PatientDutyThursday = findViewById(R.id.ThursdayDescription);
+        PatientDutyFriday = findViewById(R.id.FridayDescription);
+        PatientDutySaturday = findViewById(R.id.SaturdayDescription);
+        PatientDutySunday = findViewById(R.id.SundayDescription);
+
         btnUpdate = findViewById(R.id.gombocska);
 
 
@@ -97,9 +119,16 @@ public class PatientInfo extends AppCompatActivity {
                     mPatientContact = (String) documentSnapshot.get("contact");
                     mPatientDoctorsName = (String) documentSnapshot.get("doctorsName");
                     mPatientNextAppo = (String) documentSnapshot.get("nextAppointment");
-                    mPatientStatus = (String) documentSnapshot.get("status");
                     mPatientBirthDay = (String) documentSnapshot.get("birthDay");
                     mPatientDescription = (String) documentSnapshot.get("description");
+
+                    mPatientDutyMonday = (String) documentSnapshot.get("monday");
+                    mPatientDutyTuesday = (String) documentSnapshot.get("tuesday");
+                    mPatientDutyWednesday = (String) documentSnapshot.get("wednesday");
+                    mPatientDutyThursday = (String) documentSnapshot.get("thursday");
+                    mPatientDutyFriday = (String) documentSnapshot.get("friday");
+                    mPatientDutySaturday = (String) documentSnapshot.get("saturday");
+                    mPatientDutySunday = (String) documentSnapshot.get("sunday");
 
                     CurrentPatient.append(mShowPatientName);
                     patientName.append(mShowPatientName);
@@ -109,8 +138,15 @@ public class PatientInfo extends AppCompatActivity {
                     patientBirthD.append(mPatientBirthDay);
                     patientDoctorsName.append(mPatientDoctorsName);
                     patientDescription.append(mPatientDescription);
-                    patientStatus.append(mPatientStatus);
                     patientNextOpp.append(mPatientNextAppo);
+
+                    PatientDutyMonday.append(mPatientDutyMonday);
+                    PatientDutyTuesday.append(mPatientDutyTuesday);
+                    PatientDutyWednesday.append(mPatientDutyWednesday);
+                    PatientDutyThursday.append(mPatientDutyThursday);
+                    PatientDutyFriday.append(mPatientDutyFriday);
+                    PatientDutySaturday.append(mPatientDutySaturday);
+                    PatientDutySunday.append(mPatientDutySunday);
 
                 }else{
                     Toast.makeText(PatientInfo.this,"valami nem okés",Toast.LENGTH_LONG).show();
@@ -128,7 +164,7 @@ public class PatientInfo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 UpdateData();
-                SendEmail();
+                //SendEmail();
             }
         });
     }
@@ -151,7 +187,15 @@ public class PatientInfo extends AppCompatActivity {
         String uDoctorsName = patientDoctorsName.getText().toString();
         String uNextAppointment = patientNextOpp.getText().toString();
         String uSex = patientGender.getText().toString();
-        String uStatus = patientStatus.getText().toString();
+
+        String uMonday = PatientDutyMonday.getText().toString();
+        String uTuesday = PatientDutyTuesday.getText().toString();
+        String uWednesday = PatientDutyWednesday.getText().toString();
+        String uThursday = PatientDutyThursday.getText().toString();
+        String uFriday = PatientDutyFriday.getText().toString();
+        String uSaturday = PatientDutySaturday.getText().toString();
+        String uSunday = PatientDutySunday.getText().toString();
+
         //reference.update("fullName", uName);
         reference.update("age", uAge);
         reference.update("birthDay", uBirthDay);
@@ -160,10 +204,16 @@ public class PatientInfo extends AppCompatActivity {
         reference.update("doctorsName", uDoctorsName);
         reference.update("nextAppointment", uNextAppointment);
         reference.update("sex", uSex);
-        reference.update("status", uStatus);
+        reference.update("monday", uMonday);
+        reference.update("tuesday", uTuesday);
+        reference.update("wednesday", uWednesday);
+        reference.update("thursday", uThursday);
+        reference.update("friday", uFriday);
+        reference.update("saturday", uSaturday);
+        reference.update("sunday", uSunday);
+
         Toast.makeText(PatientInfo.this,"Update történt",Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, AvailablePatients.class);
-        startActivity(intent);
+        finish();
     }
 
     public void delete(View view) {

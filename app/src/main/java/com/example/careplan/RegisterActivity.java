@@ -42,15 +42,20 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     EditText ageET;
     EditText birthET;
     Spinner docSpinner;
-    EditText plenET;
     EditText progressionET;
+    EditText mondayET;
+    EditText tuesdayET;
+    EditText wednesdayET;
+    EditText thursdayET;
+    EditText fridayET;
+    EditText saturdayET;
+    EditText sundayET;
+
 
 
     @Override
     protected void onPause() {
         super.onPause();
-
-
         Log.i(LOG_TAG,"onPause");
     }
 
@@ -61,15 +66,22 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 
         firestore = FirebaseFirestore.getInstance();
-        nextAppointmentET = findViewById(R.id.nextAppointmentEditText);
         usernameET = findViewById(R.id.UsernameEditText);
-            sexRB = findViewById(R.id.SexEditText);
+        sexRB = findViewById(R.id.SexEditText);
         emailET = findViewById(R.id.EmailEditText);
         ageET = findViewById(R.id.ageEditText);
         birthET = findViewById(R.id.birthEditText);
         docSpinner = findViewById(R.id.doctorNameEditText);
-        plenET = findViewById(R.id.PlanEditText);
         progressionET = findViewById(R.id.progressEditText);
+        nextAppointmentET = findViewById(R.id.nextAppointmentEditText);
+        mondayET = findViewById(R.id.MondayDescription);
+        tuesdayET = findViewById(R.id.TuesdayDescription);
+        wednesdayET = findViewById(R.id.WednesdayDescription);
+        thursdayET = findViewById(R.id.ThursdayDescription);
+        fridayET = findViewById(R.id.FridayDescription);
+        saturdayET = findViewById(R.id.SaturdayDescription);
+        sundayET = findViewById(R.id.SundayDescription);
+
 
         sexRB.check(R.id.alap);
         docSpinner.setOnItemSelectedListener(this);
@@ -85,8 +97,14 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         String email = emailET.getText().toString();
         String age = ageET.getText().toString();
         String birthDate = birthET.getText().toString();
-        String plan = plenET.getText().toString();
         String progress = progressionET.getText().toString();
+        String monday = mondayET.getText().toString();
+        String tuesday = tuesdayET.getText().toString();
+        String wednesday = wednesdayET.getText().toString();
+        String thursday = thursdayET.getText().toString();
+        String friday = fridayET.getText().toString();
+        String saturday = saturdayET.getText().toString();
+        String sunday = sundayET.getText().toString();
 
         int checkedSex = sexRB.getCheckedRadioButtonId();
         RadioButton radioButton = sexRB.findViewById(checkedSex);
@@ -98,18 +116,29 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         patientData.put("fullName", username);
         patientData.put("sex", sexType);
         patientData.put("doctorsName", doc);
-        //patientData.put("state", "folyamatban");
         patientData.put("contact", email);
         patientData.put("age", age);
-        patientData.put("description", plan);
+
         patientData.put("birthDay", birthDate);
         patientData.put("contact", email);
-        patientData.put("status", progress);
+        patientData.put("description", progress);
         patientData.put("nextAppointment", nextAppointment);
+
+        patientData.put("monday", monday);
+        patientData.put("tuesday", tuesday);
+        patientData.put("wednesday", wednesday);
+        patientData.put("thursday", thursday);
+        patientData.put("friday", friday);
+        patientData.put("saturday", saturday);
+        patientData.put("sunday", sunday);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         ref.set(patientData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                Log.i(LOG_TAG, "siker");
+
             }
         });
 
