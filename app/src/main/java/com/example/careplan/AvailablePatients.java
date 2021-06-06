@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -54,7 +55,7 @@ public class AvailablePatients extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        mItemList.add(new Patient(document.getString("fullName"), document.getString("sex"), document.getString("contact"), document.getString("age"), document.getString("birthDay"), document.getString("doctorsName"), document.getString("description"), document.getString("nextAppointment")));
+                        mItemList.add(new Patient(document.getString("fullName"), document.getString("sex"), document.getString("contact"), document.getString("age"), document.getString("birthDay"), document.getString("doctorsName"), document.getString("description"), document.getString("nextAppointment"), String.valueOf(document.get("note"))));
                     }
                 } else {
                     Toast.makeText(AvailablePatients.this, "An error has occoured, please try again later", Toast.LENGTH_LONG).show();

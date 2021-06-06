@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -40,6 +41,7 @@ public class PatientInfo extends AppCompatActivity {
     String mPatientBirthDay;
     String mPatientDoctorsName;
     String mPatientDescription;
+    String mPatientInfo;
 
     String mPatientNextAppo;
 
@@ -60,6 +62,7 @@ public class PatientInfo extends AppCompatActivity {
     EditText patientDoctorsName;
     EditText patientDescription;
     EditText patientNextOpp;
+    EditText PatientNote;
 
     EditText PatientDutyMonday;
     EditText PatientDutyTuesday;
@@ -79,7 +82,7 @@ public class PatientInfo extends AppCompatActivity {
         if(user==null || mShowPatientName == null){
             finish();
         }
-
+        PatientNote = findViewById(R.id.addNoteEditText);
         CurrentPatient = findViewById(R.id.user);
         patientName = findViewById(R.id.UsernameEditText);
         patientGender = findViewById(R.id.SexEditText);
@@ -140,6 +143,8 @@ public class PatientInfo extends AppCompatActivity {
                     patientDescription.append(mPatientDescription);
                     patientNextOpp.append(mPatientNextAppo);
 
+
+
                     PatientDutyMonday.append(mPatientDutyMonday);
                     PatientDutyTuesday.append(mPatientDutyTuesday);
                     PatientDutyWednesday.append(mPatientDutyWednesday);
@@ -163,6 +168,10 @@ public class PatientInfo extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                firestore = FirebaseFirestore.getInstance();
+                reference = firestore.collection("patient").document(mShowPatientName);
+                String note = PatientNote.getText().toString();
+                reference.update("note", FieldValue.arrayUnion(note));
                 UpdateData();
                 //SendEmail();
             }

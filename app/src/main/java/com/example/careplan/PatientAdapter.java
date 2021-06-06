@@ -7,11 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -79,11 +82,13 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHold
             notifyDataSetChanged();
         }
     };
+
     class ViewHolder extends RecyclerView.ViewHolder{
     private TextView mNameText;
     private TextView mAgeText;
     private TextView mSexText;
     private TextView mDoctorsNameText;
+
 
     public ViewHolder(View itemView) {
         super(itemView);
@@ -92,6 +97,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHold
         mAgeText = itemView.findViewById(R.id.age);
         mSexText = itemView.findViewById(R.id.patientSex);
         mDoctorsNameText = itemView.findViewById(R.id.doctorsName);
+
         itemView.findViewById(R.id.viewPatient).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,5 +118,6 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHold
         mDoctorsNameText.setText(currentPatient.getDoctorsName());
 
     }
+
 };
 };

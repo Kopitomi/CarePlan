@@ -22,8 +22,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -39,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
     //List<String> category;
     private FirebaseFirestore firestore;
+    private DocumentReference reference;
     EditText nextAppointmentET;
     EditText usernameET;
     RadioGroup sexRB;
@@ -164,6 +167,9 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         patientData.put("friday", friday);
         patientData.put("saturday", saturday);
         patientData.put("sunday", sunday);
+        patientData.put("note", Arrays.asList());
+
+
 
 //        Intent intent = new Intent(this, MainActivity.class);
 //        startActivity(intent);

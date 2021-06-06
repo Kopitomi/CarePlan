@@ -45,11 +45,22 @@
             android:padding="8dp"
             android:text="@string/doctor"
             android:layout_centerHorizontal="true"/>
+        <ListView
+            android:id="@+id/patientNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/doctorsName"
+            android:layout_marginBottom="12dp"
+            android:padding="8dp"
+            android:maxLines="20"
+            android:lines="5"
+            android:hint="Notes"
+            android:layout_centerHorizontal="true"/>
         <Button
             android:id="@+id/viewPatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/doctorsName"
+            android:layout_below="@id/patientNote"
             android:text="Megtekint"
             android:layout_centerHorizontal="true"
             />
