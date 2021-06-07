@@ -41,7 +41,7 @@ public class PatientInfo extends AppCompatActivity {
     String mPatientBirthDay;
     String mPatientDoctorsName;
     String mPatientDescription;
-    String mPatientInfo;
+    String mPatientCategory;
 
     String mPatientNextAppo;
 
@@ -63,6 +63,7 @@ public class PatientInfo extends AppCompatActivity {
     EditText patientDescription;
     EditText patientNextOpp;
     EditText PatientNote;
+    EditText PatientCategory;
 
     EditText PatientDutyMonday;
     EditText PatientDutyTuesday;
@@ -91,6 +92,7 @@ public class PatientInfo extends AppCompatActivity {
         patientBirthD = findViewById(R.id.birthEditText);
         patientDoctorsName = findViewById(R.id.doctorNameEditText);
         patientDescription = findViewById(R.id.progressEditText);
+        PatientCategory = findViewById(R.id.categoryEditText);
 
         patientNextOpp = findViewById(R.id.nextAppointmentEditText);
 
@@ -124,6 +126,7 @@ public class PatientInfo extends AppCompatActivity {
                     mPatientNextAppo = (String) documentSnapshot.get("nextAppointment");
                     mPatientBirthDay = (String) documentSnapshot.get("birthDay");
                     mPatientDescription = (String) documentSnapshot.get("description");
+                    mPatientCategory = (String) documentSnapshot.get("category");
 
                     mPatientDutyMonday = (String) documentSnapshot.get("monday");
                     mPatientDutyTuesday = (String) documentSnapshot.get("tuesday");
@@ -142,6 +145,7 @@ public class PatientInfo extends AppCompatActivity {
                     patientDoctorsName.append(mPatientDoctorsName);
                     patientDescription.append(mPatientDescription);
                     patientNextOpp.append(mPatientNextAppo);
+                    PatientCategory.append(mPatientCategory);
 
 
 
@@ -196,6 +200,7 @@ public class PatientInfo extends AppCompatActivity {
         String uDoctorsName = patientDoctorsName.getText().toString();
         String uNextAppointment = patientNextOpp.getText().toString();
         String uSex = patientGender.getText().toString();
+        String uCategory = PatientCategory.getText().toString();
 
         String uMonday = PatientDutyMonday.getText().toString();
         String uTuesday = PatientDutyTuesday.getText().toString();
@@ -220,6 +225,7 @@ public class PatientInfo extends AppCompatActivity {
         reference.update("friday", uFriday);
         reference.update("saturday", uSaturday);
         reference.update("sunday", uSunday);
+        reference.update("category", uCategory);
 
         Toast.makeText(PatientInfo.this,"Update történt",Toast.LENGTH_LONG).show();
         finish();
